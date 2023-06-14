@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "ORDERS")
-public class Order {
+public class Order extends BaseEntity {
 
     @Id @GeneratedValue
     @Column(name = "ORDER_ID")
@@ -23,8 +23,6 @@ public class Order {
     @OneToOne
     @JoinColumn(name = "DELIVERY_ID")
     private Delivery delivery;
-
-    private LocalDateTime orderDate;
 
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
@@ -62,14 +60,6 @@ public class Order {
 
     public Delivery getDelivery() {
         return delivery;
-    }
-
-    public LocalDateTime getOrderDate() {
-        return orderDate;
-    }
-
-    public void setOrderDate(LocalDateTime orderDate) {
-        this.orderDate = orderDate;
     }
 
     public OrderStatus getStatus() {
